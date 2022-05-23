@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.devsuperior.bds04.entities.City;
 
@@ -14,12 +15,14 @@ import com.devsuperior.bds04.entities.City;
 @Table(name = "tb_city")
 public class CityDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotBlank(message = "Campo requerido")
 	private String name;
-	
+
 	public CityDTO() {
 	}
 
@@ -27,7 +30,7 @@ public class CityDTO implements Serializable {
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public CityDTO(City entity) {
 		id = entity.getId();
 		name = entity.getName();

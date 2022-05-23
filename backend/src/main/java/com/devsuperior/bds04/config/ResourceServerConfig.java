@@ -22,9 +22,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Autowired
 	private JwtTokenStore tokenStore;
 
-	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**"};
+	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 
-	private static final String[] 	CLIENT_GET = { "/cities/**","/events/**" };
+	private static final String[] PUBLIC_GET = { "/cities/**" };
+	
+	private static final String[] ADMIN = { "/cities/**", "/events/**" };
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -39,9 +41,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			http.headers().frameOptions().disable();
 		}
 
-		http.authorizeRequests().antMatchers(PUBLIC).permitAll()
-		.antMatchers(HttpMethod.GET, CLIENT_GET).hasAnyRole("CLIENT", "ADMIN")
-		.anyRequest().hasAnyRole("ADMIN");
+		http.authorizeRequests()
+		.antMatchers(PUBLIC).permitAll()
+		.antMatchers(HttpMethod.GET,PUBLIC_GET).permitAll()
+		.antMatchers(ADMIN).hasAnyRole("CLIENT","ADMIN")
+		.antMatchers(ADMIN).hasRole("ADMIN")
+		.anyRequest().authenticated();
+		
+		
 
 	}
 
