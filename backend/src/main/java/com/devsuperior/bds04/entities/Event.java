@@ -26,7 +26,7 @@ public class Event implements Serializable {
 	private String url;
 	
 	@ManyToOne
-	@JoinColumn(name = "city_fk")
+	@JoinColumn(name = "cityId")
 	private City city;
 	
 	public Event() {
