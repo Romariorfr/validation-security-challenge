@@ -27,6 +27,7 @@ public class EventResource {
 
 	@PostMapping
 	public ResponseEntity<EventDTO> insert(@Valid @RequestBody EventDTO dto) {
+		System.out.println("city Id = "+dto.getCityId());
 		EventDTO newDTO = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newDTO.getId()).toUri();
 		return ResponseEntity.created(uri).body(newDTO);

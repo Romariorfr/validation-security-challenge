@@ -39,6 +39,8 @@ public class Event implements Serializable {
 		this.url = url;
 		this.city = city;
 	}
+	
+	
 
 	public Long getId() {
 		return id;
@@ -79,4 +81,6 @@ public class Event implements Serializable {
 	public void setCity(City city) {
 		this.city = city;
 	}
+	
+	
 }

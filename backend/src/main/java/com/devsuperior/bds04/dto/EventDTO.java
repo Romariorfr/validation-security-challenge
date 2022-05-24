@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.devsuperior.bds04.entities.Event;
 
@@ -15,15 +18,21 @@ import com.devsuperior.bds04.entities.Event;
 @Table(name = "tb_event")
 public class EventDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotBlank(message = "Campo requerido")
 	private String name;
+
+	@FutureOrPresent(message = "A data do evento não pode ser passada")
 	private LocalDate date;
 	private String url;
+
+	@NotNull(message = "Campo requerido")
 	private Long cityId;
-	
+
 	public EventDTO() {
 	}
 
@@ -34,7 +43,7 @@ public class EventDTO implements Serializable {
 		this.url = url;
 		this.cityId = cityId;
 	}
-	
+
 	public EventDTO(Event entity) {
 		id = entity.getId();
 		name = entity.getName();
