@@ -12,6 +12,33 @@ Validação de dados com Bean Validation, autenticação e autorização com OAu
  
  ## Modelo conceitual do projeto:
  
+ ![Web 1](https://github.com/Romariorfr/validation-security-challenge/blob/master/backend/Assets/modelo_conceitual.png)
+ 
+## Principais bibliotecas e tecnologias utilizadas no backend:
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Banco de dados H2
+- OAuth2
+- JSON Web Token (JWT)
+- Jakarta Bean Validation
+- Apache Maven
+
+
+# Como rodar a aplicação na sua maquina
+
+
+```bash
+# clonar repositório
+git clone https://github.com/Romariorfr/validation-security-challenge
+
+# entrar na pasta do projeto back end
+cd backend
+
+# executar o projeto
+./mvnw spring-boot:run
+```
+ 
  
  
 
